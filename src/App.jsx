@@ -3,9 +3,12 @@ import TaskForm from "./components/TaskForm";
 
 function App() {
   return (
-    <div>
+    <div className="bg-zinc-800 h-screen">
+    <div className="container mx-auto p-10">
       <TaskForm />
       <TaskList />
+    </div>
+      
     </div>
   );
 }
