@@ -1,14 +1,28 @@
 import { createContext, useState, useEffect } from "react";
-import { tasks as data } from "../data/tasks";
+//import { tasks as data } from "../data/tasks";
 
 export const TaskContext = createContext();
 
 export function TaskContextProvider(props) {
   const [tasks, setTasks] = useState([]);
 
+
+  
   useEffect(() => {
-    setTasks(data);
-  }, []);
+    //setTasks(data);
+
+    let data = localStorage.getItem("tarea");
+    if (data) {
+      setTasks(JSON.parse(data));
+    }
+    ; }, []);
+
+  useEffect(() => {
+    localStorage.setItem("tarea", JSON.stringify(tasks));
+  }, [tasks]);
+
+  
+  
 
   function createTask(task) {
     setTasks([
